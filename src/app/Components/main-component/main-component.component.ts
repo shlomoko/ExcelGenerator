@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { GeneratorService } from 'src/app/Services/GeneratorService/generator-service.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-main-component',
@@ -11,8 +12,9 @@ export class MainComponentComponent implements OnInit {
   notPdf = false;
   uploadedFiles: String = null ;
 
-  constructor(private http: HttpClient,
-              private generatorService: GeneratorService) {
+  constructor(
+              private generatorService: GeneratorService,
+              private spinner: NgxSpinnerService) {
   }
 
   ngOnInit() {
@@ -28,7 +30,14 @@ export class MainComponentComponent implements OnInit {
       // for (var i = 0; i < this.uploadedFiles.length; i++) {
       //     formData.append("uploads[]", this.uploadedFiles[i], this.uploadedFiles[i].name);
       // }
-      this.generatorService.uploadFiles(this.uploadedFiles);
+      this.spinner.show;
+      this.generatorService.uploadFiles(this.uploadedFiles)
+      .pipe {
+        takeUntil
+      }
+      .subscribe((response) => {
+        this.spinner.hide;
+    });
   }
 
   uploadFile(event) {

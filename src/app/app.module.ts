@@ -7,7 +7,7 @@ import { MainComponentComponent } from './Components/main-component/main-compone
 import { GeneratorService } from './Services/GeneratorService/generator-service.service';
 import { DragDropDirective } from './drag-drop.directive';
 import { HttpClientModule } from '@angular/common/http';
-
+import { NgxSpinnerModule } from 'ngx-spinner'
 
 @NgModule({
   declarations: [
@@ -18,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule
   ],
   providers: [
     GeneratorService
