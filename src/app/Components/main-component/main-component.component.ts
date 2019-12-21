@@ -18,7 +18,11 @@ export class MainComponentComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.spinner.show();
 
+    setTimeout(() => {
+         this.spinner.hide();
+    }, 1000);
   }
 
   fileChange(element) {
@@ -30,13 +34,10 @@ export class MainComponentComponent implements OnInit {
       // for (var i = 0; i < this.uploadedFiles.length; i++) {
       //     formData.append("uploads[]", this.uploadedFiles[i], this.uploadedFiles[i].name);
       // }
-      this.spinner.show;
+      setTimeout(() => this.spinner.show(), 25);
       this.generatorService.uploadFiles(this.uploadedFiles)
-      .pipe {
-        takeUntil
-      }
       .subscribe((response) => {
-        this.spinner.hide;
+        setTimeout(() => this.spinner.hide(), 25);
     });
   }
 
