@@ -1,0 +1,23 @@
+<nav class="navbar navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">
+      <!-- <img src="/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+      Enigmo
+    </a>
+</nav>
+
+<div class="mainContainer">
+    <div class="uploadfilecontainer" (click)="fileInput.click()" appDragDrop (onFileDropped)="uploadFile($event)">
+        Drag and Drop File Here
+        <input hidden type="file" #fileInput (change)="uploadFile($event.target.files)">
+    </div>
+    <div class="must-be-pdf" *ngIf=notPdf>File must be PDF</div>
+    <div  class="files-list" *ngIf=uploadedFiles>
+        <p> {{ uploadedFiles }} </p>
+        <button class="delete-file" (click)="deleteAttachment()">
+          <img src="./../../../assets/Recycle_Bin_Full.png">
+        </button>
+    </div>
+    <div class="input-group-prepend">
+     <button  type="button" class="btn btn-primary input-group-text upload"  (click)="upload()">Convert my files!</button>
+    </div>
+</div>
